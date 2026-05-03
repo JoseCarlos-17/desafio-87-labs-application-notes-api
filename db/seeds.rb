@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+20.times do |i|
+  Note.create(
+    title: "Note #{i + 1}",
+    content: "Content of note #{i + 1}"
+  )
+end

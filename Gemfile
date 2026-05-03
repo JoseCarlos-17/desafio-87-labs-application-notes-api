@@ -1,14 +1,14 @@
 source "https://rubygems.org"
 
-ruby "3.0.0"
+ruby "3.3.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'active_model_serializers', '~> 0.10.0'
+gem "rails", "~> 7.1.5", ">= 7.1.5.2"
+gem 'active_model_serializers'
 gem 'dotenv'
 gem 'rack-cors'
-gem "rails", "~> 7.1.5", ">= 7.1.5.2"
+gem 'pagy', '~> 43.5'
 
-# Use sqlite3 as the database for Active Record
 gem "sqlite3", ">= 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -40,9 +40,9 @@ gem "bootsnap", require: false
 
 group :development, :test do
   gem 'factory_bot_rails'
-  gem 'pry', '~> 0.15.0'
-  gem 'rspec-rails', '~> 8.0.0'
-  gem 'shoulda-matchers', '~> 7.0'
+  gem 'pry'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
 end

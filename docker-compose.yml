@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: bash -c "rails db:migrate && rails s -b 0.0.0.0"
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: development
+      SECRET_KEY_BASE: dummy_key
+    volumes:
+      - .:/rails
+      - sqlite_data:/rails/db
+
+volumes:
+  sqlite_data:
