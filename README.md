@@ -13,7 +13,6 @@ Este repositório faz parte do desafio técnico **desafio-87-blue-application-no
 | Ruby | 3.3.1 |
 | Rails | ~> 7.1.5 |
 | Banco | SQLite3 |
-| Servidor | Puma |
 | Paginação | Pagy ~> 43.5 |
 | CORS | rack-cors (`http://localhost:8080` em `config/initializers/cors.rb`) |
 
@@ -40,8 +39,6 @@ docker compose exec web bundle exec rails console
 docker compose exec web bundle exec rspec
 ```
 
-O banco SQLite fica no volume nomeado `sqlite_data` (montado em `/rails/db` no container), para os dados persistirem entre reinícios do Compose.
-
 ### Desenvolvimento sem Docker (opcional)
 
 ```bash
@@ -60,7 +57,7 @@ Todas as respostas são **JSON**. Chaves em **snake_case**, salvo configuração
 
 ### `GET /notes`
 
-Lista notas ordenadas por **`created_at` descendente**, com **paginação**.
+Lista notas ordenadas de forma decrecente por **`created_at`**, com **paginação**.
 
 **Query parameters (opcionais)**
 
@@ -127,6 +124,15 @@ O payload deve envolver os atributos sob a chave **`note`**:
 
 Objeto da nota criada com `id`, `title`, `content`, `created_at`.
 
+```json
+{
+  "id": 42,
+  "title": "Nova nota",
+  "content": "Texto",
+  "created_at": "2026-05-03T14:30:00.000Z"
+}
+```
+
 **Resposta `422 Unprocessable Entity`**
 
 Quando a validação falha (por exemplo `create!` levanta `ActiveRecord::RecordInvalid`), o retorno segue o concern `ErrorHandler`:
@@ -137,8 +143,13 @@ Quando a validação falha (por exemplo `create!` levanta `ActiveRecord::RecordI
 }
 ```
 
-(A mensagem exata depende do idioma e da regra violada.)
+ou, se tentar criar uma nota com título em branco:
 
+```json
+{
+  "error": "Validation failed: Title can't be blank"
+}
+```
 ---
 
 ## CORS
