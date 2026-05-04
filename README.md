@@ -2,7 +2,7 @@
 
 API REST em **Ruby on Rails 7.1** (modo **API-only**) para gestão de **notas**, com persistência em **SQLite**, paginação via **Pagy**, serialização JSON com **ActiveModel::Serializers** e **CORS** habilitado para consumo por aplicações front-end no desenvolvimento local.
 
-Este repositório faz parte do desafio técnico **desafio-87** (Blue Application Notes): expõe endpoints para **listar** notas com paginação e **criar** novas notas, alinhado a um cliente Vue no repositório correspondente de front-end.
+Este repositório faz parte do desafio técnico **desafio-87-blue-application-notes** (): expõe endpoints para **listar** notas com paginação e **criar** novas notas.
 
 ---
 
@@ -35,7 +35,7 @@ Na primeira subida, o serviço `web` executa `rails db:migrate` e em seguida `ra
 ### Rodar comandos Rails dentro do container
 
 ```bash
-docker compose exec web bundle exec rails db:seed
+docker compose exec web bundle exec rails db:seed (Obs: caso ele não funcione com o docker, execute "rails db:seed")
 docker compose exec web bundle exec rails console
 docker compose exec web bundle exec rspec
 ```
@@ -160,6 +160,3 @@ bundle exec rspec
 Itens pedidos no escopo desafio que não puderam ser adicionados neste repositório:
 
 - **Autenticação:** usuários, tokens ou sessões;
-
-Esses pontos podem ser priorizados em iterações futuras conforme o escopo do produto ou do desafio.
-
