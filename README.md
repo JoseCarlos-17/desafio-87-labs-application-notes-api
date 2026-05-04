@@ -162,3 +162,4 @@ Itens pedidos no escopo desafio que não puderam ser adicionados neste repositó
 - **Autenticação:** usuários, tokens ou sessões;
 
 Esses pontos podem ser priorizados em iterações futuras conforme o escopo do produto ou do desafio.
+
