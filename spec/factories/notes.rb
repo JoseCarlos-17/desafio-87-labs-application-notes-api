@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :note do
-    title { "MyString" }
+    sequence(:title) { |n| "MyString#{n}" }
     content { "MyString" }
   end
 end

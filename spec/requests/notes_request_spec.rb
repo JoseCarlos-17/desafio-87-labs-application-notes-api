@@ -26,6 +26,24 @@ RSpec.describe 'Notes', type: :request do
         expect(json_body[:notes][0]).to include(:id, :title, :content, :created_at)
       end
     end
+
+    context 'when the notes are filtered by title' do
+      let!(:note1) { create(:note, title: 'MyString1') }
+      let!(:note2) { create(:note, title: 'MyString2') }
+
+      before do
+        get '/notes', params: { title: 'MyString1' }
+      end
+      
+      it 'must return 200 status code' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'must return the filtered notes' do
+        expect(json_body[:notes][0]).to include(:id, :title, :content, :created_at)
+        expect(json_body[:notes][0][:title]).to eq('MyString1')
+      end
+    end
   end
 
   describe 'POST#create' do
